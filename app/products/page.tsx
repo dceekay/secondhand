@@ -6,7 +6,6 @@ import Navbar from "@/components/layout/navbar";
 import ProductGrid from "@/components/products/product-grid";
 import ProductFilters, { FilterState } from "@/components/products/product-filters";
 import { MOCK_PRODUCTS } from "@/app/data/products";
-import { ProductCondition } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import {

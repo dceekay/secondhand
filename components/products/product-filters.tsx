@@ -1,6 +1,6 @@
 "use client";
 
-import { Shirt, Smartphone, Home, Compass, SlidersHorizontal, RotateCcw } from "lucide-react";
+import { RotateCcw } from "lucide-react";
 import { ProductCondition } from "@/lib/types";
 
 // Supported categories array
@@ -34,11 +34,6 @@ export default function ProductFilters({ filters, onChange, onClear }: ProductFi
   // Handler for text search inputs
   const handleSearchChange = (val: string) => {
     onChange({ ...filters, search: val });
-  };
-
-  // Handler for sorting selector
-  const handleSortChange = (val: string) => {
-    onChange({ ...filters, sortBy: val });
   };
 
   // Handler for category select click

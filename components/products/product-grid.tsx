@@ -35,7 +35,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
         </div>
         <h3 className="text-base font-bold text-zinc-800">No items found</h3>
         <p className="text-xs text-zinc-500 max-w-xs mt-1 leading-relaxed">
-          We couldn't find any pre-loved products matching your active filters. Try clearing some selections.
+          We couldn&apos;t find any pre-loved products matching your active filters. Try clearing some selections.
         </p>
       </div>
     );

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search, Sparkles, Shirt, Smartphone, Home, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 
 export default function Hero() {
   const router = useRouter();

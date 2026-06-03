@@ -138,7 +138,7 @@ export default function Home() {
                 </div>
                 <h3 className="font-bold text-sm text-white">WhatsApp Checkout</h3>
                 <p className="mt-2 text-xs text-zinc-300 leading-relaxed">
-                  Fill shipping forms. Click submit to dynamically generate details and instantly ping each item's seller over WhatsApp!
+                  Fill shipping forms. Click submit to dynamically generate details and instantly ping each item&apos;s seller over WhatsApp!
                 </p>
               </div>
 

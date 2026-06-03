@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Plus, Minus, Trash2, ShoppingBag, X } from "lucide-react";
+import { Plus, Minus, Trash2, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
@@ -27,7 +27,7 @@ export default function CartDrawerContent({ onClose }: CartDrawerContentProps) {
         </div>
         <h3 className="font-bold text-zinc-800 text-base">Your bag is empty</h3>
         <p className="text-xs text-zinc-400 max-w-xs mt-1.5 leading-relaxed">
-          Looks like you haven't added any pre-loved items to your shopping bag yet.
+          Looks like you haven&apos;t added any pre-loved items to your shopping bag yet.
         </p>
         <Button 
           onClick={onClose} 
