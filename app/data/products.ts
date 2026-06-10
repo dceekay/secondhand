@@ -6,33 +6,56 @@ export const MOCK_SELLERS: Record<string, Seller> = {
     id: "seller-1",
     name: "Damilola K.",
     rating: 4.9,
-    phone: "2348031234567", // WhatsApp ready (no +, no 00)
+    location: "Lagos",
+    verified: true,
+    totalSales: 142,
     joinedDate: "October 2024",
-    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&q=80",
+    phone: "2348031234567",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&q=80",
+    bio: "Fashion enthusiast and sneaker collector selling carefully maintained premium items.",
   },
+
   chioma: {
     id: "seller-2",
     name: "Chioma A.",
     rating: 4.8,
-    phone: "2348123456789",
+    location: "Abuja",
+    verified: true,
+    totalSales: 97,
     joinedDate: "January 2025",
-    avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&q=80",
+    phone: "2348123456789",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&q=80",
+    bio: "Curated fashion reseller specializing in premium thrift and vintage clothing.",
   },
+
   tunde: {
     id: "seller-3",
     name: "Tunde E.",
     rating: 4.6,
-    phone: "2347065432109",
+    location: "Port Harcourt",
+    verified: true,
+    totalSales: 76,
     joinedDate: "December 2024",
-    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&q=80",
+    phone: "2347065432109",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&q=80",
+    bio: "Tech enthusiast offering quality electronics and accessories.",
   },
+
   nneka: {
     id: "seller-4",
     name: "Nneka O.",
     rating: 4.7,
-    phone: "2349088877766",
+    location: "Enugu",
+    verified: false,
+    totalSales: 41,
     joinedDate: "March 2025",
-    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&q=80",
+    phone: "2349088877766",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&q=80",
+    bio: "Home decor lover selling handcrafted and unique interior pieces.",
   },
 };
 
