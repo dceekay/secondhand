@@ -20,16 +20,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster position="bottom-right" richColors />
-        </ThemeProvider>
-      </body>
+  {children}
+  <Toaster position="bottom-right" richColors />
+</body>
     </html>
   );
 }

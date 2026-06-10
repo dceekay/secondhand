@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import {
-  Eye,
   ShoppingBag,
   Star,
   ShieldCheck,
@@ -11,6 +10,7 @@ import {
 import { Product } from "@/lib/types";
 import { formatNaira, getConditionStyles } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import WishlistButton from "@/components/wishlist/wishlist-button";
 import { useCartStore } from "@/store/cart-store";
 import { toast } from "sonner";
 
@@ -23,12 +23,15 @@ export default function ProductCard({
 }: ProductCardProps) {
   const addItem = useCartStore((state) => state.addItem);
 
-  const conditionInfo = getConditionStyles(product.condition);
+  const conditionInfo = getConditionStyles(
+    product.condition
+  );
 
   const handleAddToCart = (
     e: React.MouseEvent
   ) => {
     e.preventDefault();
+    e.stopPropagation();
 
     addItem({
       id: product.id,
@@ -41,7 +44,7 @@ export default function ProductCard({
     });
 
     toast.success(
-      `${product.title} added to cart!`,
+      `${product.title} added to cart`,
       {
         description: `Seller: ${product.seller.name}`,
       }
@@ -49,60 +52,54 @@ export default function ProductCard({
   };
 
   return (
-    <div className="group relative flex flex-col w-full h-full overflow-hidden rounded-xl bg-white border border-zinc-200 shadow-2xs hover:shadow-md transition-all duration-300">
-
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xs transition-all duration-300 hover:shadow-lg">
       {/* Product Image */}
       <Link
         href={`/product/${product.id}`}
-        className="relative block w-full aspect-square overflow-hidden bg-zinc-50"
+        className="relative block aspect-square overflow-hidden bg-zinc-100"
       >
-
         {/* Condition Badges */}
-        <div className="absolute top-2.5 left-2.5 z-10 flex flex-col gap-1 pointer-events-none">
-
+        <div className="pointer-events-none absolute top-3 left-3 z-20 flex flex-col gap-1">
           <span
-            className={`inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold tracking-wide uppercase border ${conditionInfo.badge}`}
+            className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide ${conditionInfo.badge}`}
           >
             {conditionInfo.label}
           </span>
 
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold bg-white/95 border border-zinc-200 text-zinc-700">
-            Score: {product.conditionScore}/10
+          <span className="inline-flex items-center rounded-full border border-zinc-200 bg-white/95 px-2 py-0.5 text-[9px] font-bold text-zinc-700">
+            Score {product.conditionScore}/10
           </span>
-
         </div>
 
-        {/* Brand */}
+        {/* Brand Badge */}
         {product.brand && (
-          <div className="absolute top-2.5 right-2.5 z-10 pointer-events-none">
-            <span className="inline-flex px-2 py-0.5 rounded-md text-[9px] font-extrabold uppercase tracking-wider bg-zinc-900/80 text-white backdrop-blur-xs">
+          <div className="absolute top-3 right-3 z-20">
+            <span className="inline-flex rounded-md bg-zinc-900/90 px-2 py-0.5 text-[9px] font-black uppercase tracking-wider text-white backdrop-blur-sm">
               {product.brand}
             </span>
           </div>
         )}
 
         {/* Hover Actions */}
-        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 z-10">
-
-          <Button
-            size="icon"
-            variant="secondary"
-            className="w-9 h-9 rounded-full bg-white text-zinc-900 hover:bg-zinc-100 shadow-md scale-95 group-hover:scale-100 transition-transform duration-200"
-            asChild
+        <div className="absolute inset-0 z-20 flex items-center justify-center gap-2 bg-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          {/* Wishlist */}
+          <div
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
           >
-            <Link href={`/product/${product.id}`}>
-              <Eye className="h-4 w-4" />
-            </Link>
-          </Button>
+            <WishlistButton product={product} />
+          </div>
 
+          {/* Add To Cart */}
           <Button
             size="icon"
-            className="w-9 h-9 rounded-full bg-zinc-950 text-white hover:bg-zinc-800 shadow-md scale-95 group-hover:scale-100 transition-transform duration-200"
             onClick={handleAddToCart}
+            className="h-9 w-9 rounded-full bg-zinc-950 text-white shadow-md hover:bg-zinc-800"
           >
             <ShoppingBag className="h-4 w-4" />
           </Button>
-
         </div>
 
         {/* Product Image */}
@@ -110,77 +107,67 @@ export default function ProductCard({
           src={product.images[0]}
           alt={product.title}
           loading="lazy"
-          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-
       </Link>
 
       {/* Content */}
-      <div className="flex flex-col flex-1 p-4">
-
+      <div className="flex flex-1 flex-col p-4">
         {/* Category + Size */}
-        <div className="flex items-center justify-between gap-2 text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1.5">
-
+        <div className="mb-2 flex items-center justify-between gap-2 text-[10px] font-bold uppercase tracking-wider text-zinc-400">
           <span>{product.category}</span>
 
           {product.size && (
-            <span className="border border-zinc-200 px-1 py-0.5 rounded text-[9px] text-zinc-500 font-semibold">
+            <span className="rounded border border-zinc-200 px-1.5 py-0.5 text-[9px] font-semibold text-zinc-500">
               {product.size}
             </span>
           )}
-
         </div>
 
         {/* Product Title */}
         <Link
           href={`/product/${product.id}`}
-          className="block mb-1"
+          className="mb-2 block"
         >
-          <h3 className="font-bold text-sm text-zinc-800 hover:text-zinc-950 line-clamp-1 leading-snug transition-colors">
+          <h3 className="line-clamp-2 text-sm font-bold leading-snug text-zinc-800 transition-colors hover:text-zinc-950">
             {product.title}
           </h3>
         </Link>
 
         {/* Seller Info */}
-        <div className="flex items-center gap-1 mb-3 text-xs">
-
-          <span className="text-zinc-500 font-medium">
+        <div className="mb-4 flex items-center gap-2 text-xs">
+          <span className="text-zinc-500">
             By{" "}
             <Link
               href={`/sellers/${product.seller.id}`}
-              className="text-zinc-800 font-semibold hover:text-zinc-950 hover:underline underline-offset-2"
-              onClick={(e) => e.stopPropagation()}
+              className="font-semibold text-zinc-800 hover:text-zinc-950 hover:underline underline-offset-2"
             >
               {product.seller.name}
             </Link>
           </span>
 
-          <div className="flex items-center gap-2 ml-auto">
-
+          <div className="ml-auto flex items-center gap-2">
             {product.seller.verified && (
               <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
             )}
 
-            <div className="flex items-center text-amber-500 gap-0.5">
+            <div className="flex items-center gap-0.5 text-amber-500">
               <Star className="h-3 w-3 fill-amber-500" />
-              <span className="font-bold text-[10px]">
+              <span className="text-[10px] font-bold">
                 {product.seller.rating}
               </span>
             </div>
-
           </div>
-
         </div>
 
         {/* Footer */}
-        <div className="mt-auto pt-3 border-t border-zinc-100 flex items-center justify-between gap-2">
-
+        <div className="mt-auto flex items-center justify-between gap-2 border-t border-zinc-100 pt-3">
           <div>
-            <p className="text-[9px] text-zinc-400 uppercase font-bold tracking-wider">
+            <p className="text-[9px] font-bold uppercase tracking-wider text-zinc-400">
               Price
             </p>
 
-            <p className="text-sm sm:text-base font-extrabold text-zinc-950">
+            <p className="text-base font-extrabold text-zinc-950">
               {formatNaira(product.price)}
             </p>
           </div>
@@ -188,15 +175,12 @@ export default function ProductCard({
           <Button
             size="sm"
             onClick={handleAddToCart}
-            className="rounded-full h-7 px-3 text-[10px] font-bold uppercase tracking-wider bg-zinc-900 text-white hover:bg-zinc-800"
+            className="h-8 rounded-full bg-zinc-900 px-4 text-[10px] font-bold uppercase tracking-wider text-white hover:bg-zinc-800"
           >
             Add
           </Button>
-
         </div>
-
       </div>
-
     </div>
   );
 }
