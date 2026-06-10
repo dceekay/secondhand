@@ -1,87 +1,121 @@
-# 🛍️ SecondHand
+# SecondHand
 
-> A modern WhatsApp-powered secondhand marketplace built with Next.js, React, Shadcn UI, Tailwind CSS, and Zustand.
+A modern marketplace platform built with Next.js, React, TypeScript, Tailwind CSS, Shadcn/UI, and Zustand.
 
-
-
-
-
-\
+SecondHand is designed to provide a fast, intuitive, and scalable experience for buying and selling pre-owned products while maintaining a clean and maintainable frontend architecture.
 
 ---
 
-## 📖 Overview
+## Overview
 
-SecondHand is a modern peer-to-peer marketplace designed to simplify the buying and selling of pre-owned products.
-
-Unlike traditional ecommerce platforms that require complex payment gateways and seller onboarding processes, SecondHand focuses on direct buyer-seller communication through WhatsApp.
+SecondHand is a peer-to-peer marketplace focused on connecting buyers and sellers through a modern web experience.
 
 The platform enables users to:
 
-* Browse secondhand products
-* Search and filter listings
+* Browse curated product listings
+* Search and filter products
 * View detailed product information
-* Add products to cart
-* Generate WhatsApp order requests
-* Contact sellers directly
-* Upload products through WhatsApp workflows
-* Manage marketplace interactions with minimal friction
+* Add products to a persistent shopping cart
+* Explore seller profiles
+* Discover trusted marketplace sellers
+* Navigate a responsive mobile-first interface
 
-The long-term vision is to create a lightweight circular economy marketplace that connects local buyers and sellers without the overhead of traditional ecommerce systems.
-
----
-
-# 🎯 Project Goals
-
-### Simplicity First
-
-The platform is designed around one core principle:
-
-> Buying and selling should take less than 60 seconds.
-
-Users should never be forced through complicated registration processes, payment forms, or unnecessary steps.
+The project is currently frontend-focused and uses structured mock data while core marketplace functionality is developed.
 
 ---
 
-# 🚀 Current Tech Stack
+## Objectives
 
-## Frontend
+The primary goal of the project is to demonstrate modern marketplace architecture and frontend engineering practices.
+
+Key objectives include:
+
+* Responsive marketplace design
+* Scalable component architecture
+* State management with persistence
+* Marketplace user experience design
+* Seller and product management workflows
+* Preparation for backend integration
+
+---
+
+## Technology Stack
+
+### Frontend
 
 * Next.js 16 (App Router)
 * React 19
 * TypeScript
 * Tailwind CSS v4
-* Shadcn UI
+* Shadcn/UI
 * Radix UI
-* Lucide Icons
+* Lucide React
 
-## State Management
+### State Management
 
 * Zustand
 * Zustand Persist Middleware
 
-## Notifications
+### User Experience
 
-* Sonner
-
-## Styling
-
-* CSS Variables
-* Design Tokens
-* Responsive Mobile-First Layout
+* Framer Motion
+* Sonner Notifications
+* Responsive Mobile-First Design
 
 ---
 
-# 🏗️ Architecture
+## Current Features
 
-## Rendering Strategy
+### Marketplace
 
-SecondHand leverages:
+* Product Catalog
+* Product Detail Pages
+* Category Browsing
+* Product Search
+* Dynamic Filtering
+* Product Sorting
+* Condition-Based Product Classification
 
-* Static Site Generation (SSG)
+### Seller System
+
+* Seller Profiles
+* Seller Ratings
+* Verification Status
+* Seller Bios
+* Seller Statistics
+* Seller Product Listings
+
+### Shopping Experience
+
+* Persistent Shopping Cart
+* Quantity Management
+* Dynamic Price Calculations
+* Cart Drawer
+* Local Storage Persistence
+
+### User Interface
+
+* Responsive Layout
+* Mobile Navigation
+* Product Cards
+* Condition Badges
+* Marketplace Search Experience
+* Seller Discovery
+
+---
+
+## Architecture
+
+SecondHand follows a component-driven architecture using the Next.js App Router.
+
+### Rendering Strategy
+
+The platform leverages:
+
 * Server Components
 * Client Components
-* Dynamic Metadata Generation
+* Static Site Generation (SSG)
+* Dynamic Route Generation
 * Route-Based Code Splitting
 
 This approach delivers:
@@ -89,226 +123,140 @@ This approach delivers:
 * Faster page loads
 * Better SEO
 * Reduced bundle sizes
-* Improved user experience
+* Improved maintainability
+
+### State Management
+
+Global application state is managed using Zustand.
+
+Current state modules include:
+
+* Shopping Cart
+* Cart Persistence
+* Quantity Management
+
+The state layer is designed to support future marketplace functionality such as:
+
+* Wishlists
+* Recently Viewed Products
+* User Preferences
+* Seller Dashboards
 
 ---
 
-# 📦 Core Features
+## Project Structure
 
-## Marketplace
+```text
+app/
+├── checkout/
+├── data/
+├── product/
+├── products/
+├── sellers/
+├── layout.tsx
+└── page.tsx
 
-* Product catalog
-* Product details page
-* Category browsing
-* Search functionality
-* Product filtering
-* Responsive layouts
+components/
+├── home/
+├── layout/
+├── products/
+├── sellers/
+├── shared/
+└── ui/
 
----
+store/
+├── cart-store.ts
 
-## Cart System
-
-Powered by Zustand persistence.
-
-Features:
-
-* Add to cart
-* Remove from cart
-* Quantity updates
-* Local storage persistence
-* Cross-page synchronization
-
----
-
-## Seller Marketplace
-
-Each listing contains:
-
-* Product information
-* Seller details
-* Contact information
-* Condition rating
-* Pricing information
+lib/
+├── types.ts
+├── utils.ts
+```
 
 ---
 
-## WhatsApp Checkout
-
-The checkout system is intentionally different from traditional ecommerce platforms.
-
-Instead of processing payments directly:
-
-1. User adds products to cart
-2. Cart groups products by seller
-3. System generates invoice messages
-4. WhatsApp opens automatically
-5. Buyer contacts seller directly
-
-Benefits:
-
-* No payment gateway fees
-* No merchant onboarding
-* Faster transactions
-* Direct communication
-* Easier dispute resolution
-
----
-
-# 💬 WhatsApp Marketplace Vision
-
-WhatsApp is not only intended for ordering.
-
-Future versions of SecondHand will allow sellers to submit products directly through WhatsApp conversations.
-
-Example workflow:
-
-1. Seller sends product photos
-2. Seller submits product title
-3. Seller submits description
-4. Seller enters price
-5. Product is validated
-6. Product appears on marketplace
-
-This creates a marketplace experience where:
-
-> WhatsApp becomes both the storefront and seller dashboard.
-
----
-
-# 🔮 Planned Features
-
-## Phase 1
+## Completed Features
 
 ### Marketplace Foundation
 
 * [x] Next.js Setup
 * [x] Tailwind CSS
-* [x] Shadcn UI
-* [x] Zustand Store
+* [x] Shadcn/UI Integration
+* [x] Zustand Integration
 * [x] Responsive Layout
 * [x] Homepage
-* [x] Product Listing Page
-* [ ] Product Details Page
-* [ ] Search System
-* [ ] Filter System
+* [x] Product Catalog
+* [x] Product Detail Pages
+* [x] Search Functionality
+* [x] Product Filtering
+* [x] Product Sorting
+* [x] Shopping Cart
+* [x] Seller Profiles
 
 ---
 
-## Phase 2
+## Roadmap
 
-### Shopping Experience
+### Phase 2 — Marketplace Experience
 
-* [ ] Wishlist
+* [ ] Wishlist System
 * [ ] Recently Viewed Products
-* [ ] Product Recommendations
-* [ ] Seller Profiles
-* [ ] Cart Drawer
-* [ ] Checkout Experience
+* [ ] Enhanced Checkout Experience
+* [ ] Product Reviews
+* [ ] Seller Reviews
+
+### Phase 3 — Seller Ecosystem
+
+* [ ] Seller Dashboard
+* [ ] Product Upload System
+* [ ] Listing Management
+* [ ] Inventory Management
+* [ ] Seller Analytics
+
+### Phase 4 — Backend Integration
+
+* [ ] MongoDB Atlas
+* [ ] Authentication System
+* [ ] User Management
+* [ ] API Layer
+* [ ] Cloud Storage
+
+### Phase 5 — Search & Discovery
+
+* [ ] Advanced Search
+* [ ] Semantic Search
+* [ ] Vector Database Integration
+* [ ] Intelligent Product Discovery
+* [ ] Marketplace Recommendations
 
 ---
 
-## Phase 3
-
-### WhatsApp Commerce
-
-* [ ] WhatsApp Checkout
-* [ ] Seller Order Routing
-* [ ] Split Seller Invoices
-* [ ] WhatsApp Product Uploads
-* [ ] Seller Verification
-
----
-
-## Phase 4
-
-### AI Features
-
-* [ ] AI Product Description Generator
-* [ ] AI Category Detection
-* [ ] AI Image Enhancement
-* [ ] AI Product Tagging
-* [ ] AI Search Suggestions
-
----
-
-# 📁 Project Structure
-
-```bash
-src/
-│
-├── app/
-├── components/
-│   ├── layout/
-│   ├── home/
-│   ├── products/
-│   ├── cart/
-│   └── shared/
-│
-├── store/
-├── hooks/
-├── lib/
-├── types/
-├── constants/
-├── data/
-└── styles/
-```
-
----
-
-# 🌍 Future Roadmap
-
-### Buyer Experience
-
-* Real-time messaging
-* Saved searches
-* Product alerts
-* Nearby listings
-* Advanced search
-
-### Seller Experience
-
-* Product uploads
-* Inventory management
-* Analytics dashboard
-* Order tracking
-
-### Platform
-
-* Authentication
-* Cloud storage
-* Admin dashboard
-* Moderation tools
-* Payment integrations
-
----
-
-# 🎓 SIWES Project
+## SIWES Project
 
 This project is being developed as part of the Student Industrial Work Experience Scheme (SIWES).
 
-The objective is to demonstrate modern full-stack software engineering practices including:
+The system demonstrates practical software engineering concepts including:
 
 * Frontend Architecture
 * State Management
-* Component Design
-* Ecommerce Workflows
+* Marketplace Design
+* Component Engineering
 * Responsive Development
-* API Integration
+* Type Safety
 * User Experience Design
-* Marketplace Systems
+* Ecommerce Workflows
 
 ---
 
-# 👨‍💻 Developer
+## Developer
 
-**Ceekay**
+Ceekay
 
 Software Engineer | Frontend Developer | Full Stack Developer
 
-Passionate about building scalable digital products, ecommerce platforms, and modern web experiences.
+Focused on building scalable digital products, marketplace platforms, and modern web applications.
 
 ---
 
-## ⭐ Vision Statement
+## Vision
 
-SecondHand aims to become the easiest way for people to buy and sell used products online by combining the simplicity of WhatsApp with the power of modern web technologies.
+SecondHand aims to evolve into a full-featured marketplace platform that combines modern frontend engineering practices with scalable marketplace architecture while providing a seamless buying and selling experience.
