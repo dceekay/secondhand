@@ -253,15 +253,15 @@ export default function Navbar() {
       </div>
 
       <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() =>
-          setIsMobileMenuOpen(false)
-        }
-        cartCount={cartCount}
-        onOpenCart={() =>
-          setIsCartOpen(true)
-        }
-      />
+  isOpen={isMobileMenuOpen}
+  onClose={() => setIsMobileMenuOpen(false)}
+  cartCount={cartCount}
+  user={user}
+  onLogout={logout}
+  onOpenCart={() => {
+    setIsCartOpen(true);
+  }}
+/>
     </header>
   );
 }
